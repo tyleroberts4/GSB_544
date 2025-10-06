@@ -85,22 +85,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p>format: html: embed-resources: true</p>
 <p>Task 1 Aesthetics being used are:</p>
 <p>x = income</p>
 <p>y = life_exp</p>
 <p>size = population</p>
 <p>fill = four_regions</p>
-<div id="cell-1" class="cell" data-execution_count="66">
+<div id="cell-2" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotnine <span class="im">as</span> p9</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="67">
+<div id="cell-3" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>q1 <span class="op">=</span> pd.read_csv(<span class="st">"q1data.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>q2 <span class="op">=</span> pd.read_csv(<span class="st">"q2data.csv"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>q3 <span class="op">=</span> pd.read_csv(<span class="st">"q3data.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="e8249139-73a1-40e8-8310-644dce3fa580" data-execution_count="68">
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="e8249139-73a1-40e8-8310-644dce3fa580" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>breaks <span class="op">=</span> [<span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">4000</span>, <span class="dv">8000</span>, <span class="dv">16000</span>, <span class="dv">32000</span>, <span class="dv">64000</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"500"</span>, <span class="st">"1000"</span>, <span class="st">"2000"</span>, <span class="st">"4000"</span>, <span class="st">"8000"</span>, <span class="st">"16k"</span>, <span class="st">"32k"</span>, <span class="st">"64k"</span>]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>year_text <span class="op">=</span> <span class="bu">str</span>(q1[<span class="st">'year'</span>].iloc[<span class="dv">0</span>])</span>
@@ -141,12 +142,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="69">
+<div id="cell-5" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I asked chatGPT on how I would add things like a watermark to a graph and it taught me the annotate function which I later used to make the category labesl.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># I also needed help making the 2010 pulled from the data and not just text that says "2010"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can use geom_boxplot. it’s able to summarize central tendency and spread by region at a glance. However,it hides country-level points and the income dimension entirely, you can’t see how income relates to life expectancy. And there is no way to show population size.</p>
-<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:434}}" data-outputid="389981bf-5530-412a-b5d7-aa41ff57be49" data-execution_count="70">
+<div id="cell-7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:434}}" data-outputid="389981bf-5530-412a-b5d7-aa41ff57be49" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df) <span class="op">+</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    aes(x<span class="op">=</span><span class="st">"four_regions"</span>, y<span class="op">=</span><span class="st">"life_exp"</span>, fill<span class="op">=</span><span class="st">"four_regions"</span>)</span>
@@ -173,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>y = imports</p>
 <p>size = energy (use)</p>
 <p>fill = four_regions</p>
-<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:115}}" data-outputid="423b536f-c429-4979-90b7-18f5ea729b7a" data-execution_count="71">
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:115}}" data-outputid="423b536f-c429-4979-90b7-18f5ea729b7a" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>q2[[<span class="st">"energy"</span>]].dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="71">
 <div>
@@ -197,10 +198,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div><br><label><b>dtype:</b> object</label>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="72">
+<div id="cell-10" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>q2[<span class="st">"energy"</span>] <span class="op">=</span> pd.to_numeric(q2[<span class="st">"energy"</span>], errors<span class="op">=</span><span class="st">'coerce'</span>) <span class="co">#chat helped me with my error I kept getting because I didn't realize energy was an object not numeric</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:434}}" data-outputid="cab26a3a-9146-4eb1-e278-9bc29f3baa13" data-execution_count="76">
+<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:434}}" data-outputid="cab26a3a-9146-4eb1-e278-9bc29f3baa13" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>year_text2 <span class="op">=</span> <span class="bu">str</span>(q2[<span class="st">'year'</span>].iloc[<span class="dv">0</span>])</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>q2 <span class="op">=</span> q2.sort_values(<span class="st">"energy"</span>, ascending<span class="op">=</span><span class="va">False</span>) <span class="co">#I kept getting smaller circles hidden by bigger circles so I asked chat what function is used to send bigger data behind smaller data</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>(</span>
@@ -231,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You could use a heatmap of Exports vs Imports. A heatmeap would be good for handling overplotting, making dense areas visible, and Good for spotting clusters of countries. It wouldn’t be good for losing individual country identity, and there’s No way to encode energy or region with bubble size or color.</p>
-<div id="cell-12" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:534}}" data-outputid="8c47e4dd-c2ba-4d75-ffdb-2837813c44f1" data-execution_count="74">
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:534}}" data-outputid="8c47e4dd-c2ba-4d75-ffdb-2837813c44f1" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    ggplot(q2, aes(x<span class="op">=</span><span class="st">"exports"</span>, y<span class="op">=</span><span class="st">"imports"</span>))</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_bin2d(bins<span class="op">=</span><span class="dv">30</span>)</span>
@@ -255,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>y = GDP</p>
 <p>size = income</p>
 <p>fill = four_regions</p>
-<div id="cell-14" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="ca5d2bfe-2243-4955-de60-5bc03888b39b" data-execution_count="75">
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="ca5d2bfe-2243-4955-de60-5bc03888b39b" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>breaks <span class="op">=</span> [<span class="dv">200</span>, <span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">2000</span>, <span class="dv">5000</span>, <span class="dv">10000</span>, <span class="dv">20000</span>, <span class="dv">50000</span>, <span class="dv">100000</span>]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">"200"</span>, <span class="st">"500"</span>, <span class="st">"1000"</span>, <span class="st">"2000"</span>, <span class="st">"5000"</span>, <span class="st">"10k"</span>, <span class="st">"20k"</span>, <span class="st">"50k"</span>, <span class="st">"100k"</span>]</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>year_text3 <span class="op">=</span> <span class="bu">str</span>(q3[<span class="st">'year'</span>].iloc[<span class="dv">0</span>])</span>
@@ -294,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can use a geom_violin. a violin shows the full distribution shape of GDP per capita in each region. Wider sections = more countries at that GDP level. Quartile lines (25%, 50%, 75%) help compare medians and spread. However it loses Internet use (x-axis) and bubble size encoding and it’s harder to interpret exact values compared to the bubble plot</p>
-<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:434}}" data-outputid="1b7ae71a-ae83-46c1-b1a7-18badeec9eee" data-execution_count="77">
+<div id="cell-17" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:434}}" data-outputid="1b7ae71a-ae83-46c1-b1a7-18badeec9eee" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    ggplot(q3, aes(x<span class="op">=</span><span class="st">"four_regions"</span>, y<span class="op">=</span><span class="st">"gdp"</span>, fill<span class="op">=</span><span class="st">"four_regions"</span>))</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_violin(alpha<span class="op">=</span><span class="fl">0.7</span>, draw_quantiles<span class="op">=</span>[<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>])  <span class="co"># add quartile lines</span></span>
