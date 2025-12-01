@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>f3project-(4</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="F3Project (4)_files/libs/clipboard/clipboard.min.js"></script>
+<script src="F3Project (4)_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="F3Project (4)_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="F3Project (4)_files/libs/quarto-html/popper.min.js"></script>
+<script src="F3Project (4)_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="F3Project (4)_files/libs/quarto-html/anchor.min.js"></script>
+<link href="F3Project (4)_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="F3Project (4)_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="F3Project (4)_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="F3Project (4)_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="F3Project (4)_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<div id="1aa324ed-2b3d-4160-887a-db50f77c307b" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> GroupKFold, train_test_split</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.impute <span class="im">import</span> SimpleImputer</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.compose <span class="im">import</span> ColumnTransformer</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> brier_score_loss</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="23032c4c" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pip install xgboost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: xgboost in c:\users\tyler\anaconda3\lib\site-packages (3.1.2)Note: you may need to restart the kernel to use updated packages.
+
+Requirement already satisfied: numpy in c:\users\tyler\anaconda3\lib\site-packages (from xgboost) (2.1.3)
+Requirement already satisfied: scipy in c:\users\tyler\anaconda3\lib\site-packages (from xgboost) (1.15.3)</code></pre>
+</div>
+</div>
+<div id="58d2eb89" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBClassifier</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="25fbf401-10c8-49fe-9258-839b4762f987" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tmp_all <span class="op">=</span> pd.read_csv(<span class="st">'cimis_all_stations_clean.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="06a1c5f7-aa25-4fd5-9568-45973027838d" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tmp_all.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Stn Id</th>
+<th data-quarto-table-cell-role="th">Stn Name</th>
+<th data-quarto-table-cell-role="th">CIMIS Region</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Hour (PST)</th>
+<th data-quarto-table-cell-role="th">Jul</th>
+<th data-quarto-table-cell-role="th">ETo (mm)</th>
+<th data-quarto-table-cell-role="th">qc</th>
+<th data-quarto-table-cell-role="th">Precip (mm)</th>
+<th data-quarto-table-cell-role="th">qc.1</th>
+<th data-quarto-table-cell-role="th">Sol Rad (W/sq.m)</th>
+<th data-quarto-table-cell-role="th">qc.2</th>
+<th data-quarto-table-cell-role="th">Vap Pres (kPa)</th>
+<th data-quarto-table-cell-role="th">qc.3</th>
+<th data-quarto-table-cell-role="th">Air Temp (C)</th>
+<th data-quarto-table-cell-role="th">qc.4</th>
+<th data-quarto-table-cell-role="th">Rel Hum (%)</th>
+<th data-quarto-table-cell-role="th">qc.5</th>
+<th data-quarto-table-cell-role="th">Dew Point (C)</th>
+<th data-quarto-table-cell-role="th">qc.6</th>
+<th data-quarto-table-cell-role="th">Wind Speed (m/s)</th>
+<th data-quarto-table-cell-role="th">qc.7</th>
+<th data-quarto-table-cell-role="th">Wind Dir (0-360)</th>
+<th data-quarto-table-cell-role="th">qc.8</th>
+<th data-quarto-table-cell-role="th">Soil Temp (C)</th>
+<th data-quarto-table-cell-role="th">qc.9</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>9/28/2010</td>
+<td>100</td>
+<td>271</td>
+<td>0.06</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.9</td>
+<td></td>
+<td>20.6</td>
+<td></td>
+<td>35.0</td>
+<td></td>
+<td>4.7</td>
+<td></td>
+<td>1.7</td>
+<td></td>
+<td>253.0</td>
+<td></td>
+<td>22.8</td>
+<td></td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>9/28/2010</td>
+<td>200</td>
+<td>271</td>
+<td>0.05</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.9</td>
+<td></td>
+<td>20.0</td>
+<td></td>
+<td>38.0</td>
+<td></td>
+<td>5.3</td>
+<td></td>
+<td>1.8</td>
+<td></td>
+<td>95.0</td>
+<td></td>
+<td>22.5</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>9/28/2010</td>
+<td>300</td>
+<td>271</td>
+<td>0.04</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.9</td>
+<td></td>
+<td>19.0</td>
+<td></td>
+<td>42.0</td>
+<td></td>
+<td>5.9</td>
+<td></td>
+<td>1.3</td>
+<td></td>
+<td>141.0</td>
+<td></td>
+<td>22.2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>9/28/2010</td>
+<td>400</td>
+<td>271</td>
+<td>0.03</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.9</td>
+<td></td>
+<td>18.8</td>
+<td></td>
+<td>41.0</td>
+<td></td>
+<td>5.2</td>
+<td></td>
+<td>1.0</td>
+<td></td>
+<td>186.0</td>
+<td></td>
+<td>21.9</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>9/28/2010</td>
+<td>500</td>
+<td>271</td>
+<td>0.04</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.7</td>
+<td></td>
+<td>16.6</td>
+<td></td>
+<td>40.0</td>
+<td></td>
+<td>2.8</td>
+<td></td>
+<td>1.4</td>
+<td></td>
+<td>254.0</td>
+<td></td>
+<td>21.6</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="4e50c681-a71f-4ede-9bc1-34f926cebc43" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(tmp_all[<span class="st">'Date'</span>], <span class="bu">format</span><span class="op">=</span><span class="st">'%m/</span><span class="sc">%d</span><span class="st">/%Y'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">'Month'</span>] <span class="op">=</span> tmp_all[<span class="st">'Date'</span>].dt.month</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">'Year'</span>] <span class="op">=</span> tmp_all[<span class="st">'Date'</span>].dt.year</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">'Day'</span>] <span class="op">=</span> tmp_all[<span class="st">'Date'</span>].dt.day</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="1c991e53-d322-41f5-af6c-adffa9204b9e" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>tmp_all.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Stn Id</th>
+<th data-quarto-table-cell-role="th">Stn Name</th>
+<th data-quarto-table-cell-role="th">CIMIS Region</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Hour (PST)</th>
+<th data-quarto-table-cell-role="th">Jul</th>
+<th data-quarto-table-cell-role="th">ETo (mm)</th>
+<th data-quarto-table-cell-role="th">qc</th>
+<th data-quarto-table-cell-role="th">Precip (mm)</th>
+<th data-quarto-table-cell-role="th">qc.1</th>
+<th data-quarto-table-cell-role="th">Sol Rad (W/sq.m)</th>
+<th data-quarto-table-cell-role="th">qc.2</th>
+<th data-quarto-table-cell-role="th">Vap Pres (kPa)</th>
+<th data-quarto-table-cell-role="th">qc.3</th>
+<th data-quarto-table-cell-role="th">Air Temp (C)</th>
+<th data-quarto-table-cell-role="th">qc.4</th>
+<th data-quarto-table-cell-role="th">Rel Hum (%)</th>
+<th data-quarto-table-cell-role="th">qc.5</th>
+<th data-quarto-table-cell-role="th">Dew Point (C)</th>
+<th data-quarto-table-cell-role="th">qc.6</th>
+<th data-quarto-table-cell-role="th">Wind Speed (m/s)</th>
+<th data-quarto-table-cell-role="th">qc.7</th>
+<th data-quarto-table-cell-role="th">Wind Dir (0-360)</th>
+<th data-quarto-table-cell-role="th">qc.8</th>
+<th data-quarto-table-cell-role="th">Soil Temp (C)</th>
+<th data-quarto-table-cell-role="th">qc.9</th>
+<th data-quarto-table-cell-role="th">Month</th>
+<th data-quarto-table-cell-role="th">Year</th>
+<th data-quarto-table-cell-role="th">Day</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>100</td>
+<td>271</td>
+<td>0.06</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.9</td>
+<td></td>
+<td>20.6</td>
+<td></td>
+<td>35.0</td>
+<td></td>
+<td>4.7</td>
+<td></td>
+<td>1.7</td>
+<td></td>
+<td>253.0</td>
+<td></td>
+<td>22.8</td>
+<td></td>
+<td>9</td>
+<td>2010</td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>200</td>
+<td>271</td>
+<td>0.05</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.9</td>
+<td></td>
+<td>20.0</td>
+<td></td>
+<td>38.0</td>
+<td></td>
+<td>5.3</td>
+<td></td>
+<td>1.8</td>
+<td></td>
+<td>95.0</td>
+<td></td>
+<td>22.5</td>
+<td></td>
+<td>9</td>
+<td>2010</td>
+<td>28</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>300</td>
+<td>271</td>
+<td>0.04</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.9</td>
+<td></td>
+<td>19.0</td>
+<td></td>
+<td>42.0</td>
+<td></td>
+<td>5.9</td>
+<td></td>
+<td>1.3</td>
+<td></td>
+<td>141.0</td>
+<td></td>
+<td>22.2</td>
+<td></td>
+<td>9</td>
+<td>2010</td>
+<td>28</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>400</td>
+<td>271</td>
+<td>0.03</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.9</td>
+<td></td>
+<td>18.8</td>
+<td></td>
+<td>41.0</td>
+<td></td>
+<td>5.2</td>
+<td></td>
+<td>1.0</td>
+<td></td>
+<td>186.0</td>
+<td></td>
+<td>21.9</td>
+<td></td>
+<td>9</td>
+<td>2010</td>
+<td>28</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>500</td>
+<td>271</td>
+<td>0.04</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>0.7</td>
+<td></td>
+<td>16.6</td>
+<td></td>
+<td>40.0</td>
+<td></td>
+<td>2.8</td>
+<td></td>
+<td>1.4</td>
+<td></td>
+<td>254.0</td>
+<td></td>
+<td>21.6</td>
+<td></td>
+<td>9</td>
+<td>2010</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="133f4343" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your file</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cimis_all_stations_clean.csv"</span>)  <span class="co"># adjust path if needed</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Date to datetime</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Date"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"Date"</span>])</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Hour (PST) is like 100, 200, … → convert to hour-of-day</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"hour"</span>] <span class="op">=</span> (df[<span class="st">"Hour (PST)"</span>] <span class="op">//</span> <span class="dv">100</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Full timestamp</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"timestamp"</span>] <span class="op">=</span> df[<span class="st">"Date"</span>] <span class="op">+</span> pd.to_timedelta(df[<span class="st">"hour"</span>], unit<span class="op">=</span><span class="st">"h"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort for clean plotting</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.sort_values([<span class="st">"Stn Id"</span>, <span class="st">"timestamp"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hourly TEMP for ONE STATIOn</p>
+<div id="abb0473c" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>stn_id <span class="op">=</span> <span class="dv">105</span>            <span class="co"># pick a station ID that exists in your data</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2011-01-01"</span>    <span class="co"># choose a window to avoid plotting 15 years at once</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>end   <span class="op">=</span> <span class="st">"2011-01-15"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> (</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">"Stn Id"</span>] <span class="op">==</span> stn_id) <span class="op">&amp;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">"timestamp"</span>] <span class="op">&gt;=</span> start) <span class="op">&amp;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    (df[<span class="st">"timestamp"</span>] <span class="op">&lt;=</span> end)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>df_plot <span class="op">=</span> df.loc[mask]</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>plt.plot(df_plot[<span class="st">"timestamp"</span>], df_plot[<span class="st">"Air Temp (C)"</span>])</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)  <span class="co"># frost threshold line</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Time"</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Air Temp (°C)"</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Station </span><span class="sc">{</span>stn_id<span class="sc">}</span><span class="ss"> – Hourly Air Temperature"</span>)</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="F3Project%20(4)_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="1b9539ff" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_plot <span class="op">=</span> df_plot.copy()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>frost_mask <span class="op">=</span> df_plot[<span class="st">"Air Temp (C)"</span>] <span class="op">&lt;</span> <span class="dv">0</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df_plot[<span class="st">"timestamp"</span>], df_plot[<span class="st">"Air Temp (C)"</span>], label<span class="op">=</span><span class="st">"Air Temp (°C)"</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    df_plot.loc[frost_mask, <span class="st">"timestamp"</span>],</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    df_plot.loc[frost_mask, <span class="st">"Air Temp (C)"</span>],</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    s<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Frost (T &lt; 0°C)"</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Time"</span>)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Air Temp (°C)"</span>)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f"Station </span><span class="sc">{</span>stn_id<span class="sc">}</span><span class="ss"> – Air Temp with Frost Events"</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="F3Project%20(4)_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="7a191362" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> xgboost <span class="im">import</span> XGBClassifier</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Load and basic time info</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"cimis_all_stations_clean.csv"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># If names differ a bit, see what you have:</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Date"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"Date"</span>])</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"hour"</span>] <span class="op">=</span> (df[<span class="st">"Hour (PST)"</span>] <span class="op">//</span> <span class="dv">100</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"timestamp"</span>] <span class="op">=</span> df[<span class="st">"Date"</span>] <span class="op">+</span> pd.to_timedelta(df[<span class="st">"hour"</span>], unit<span class="op">=</span><span class="st">"h"</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Frost event definition</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"frost"</span>] <span class="op">=</span> (df[<span class="st">"Air Temp (C)"</span>] <span class="op">&lt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Build feature list based on what actually exists</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>candidate_features <span class="op">=</span> [</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Air Temp (C)"</span>,</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Dew Point (C)"</span>,</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Rel Hum (%)"</span>,</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Wind Spd (m/s)"</span>,        <span class="co"># maybe this exists</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Wind Speed (m/s)"</span>,      <span class="co"># or maybe this</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Solar Rad (W/m2)"</span>,      <span class="co"># or this</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Solar Radiation (W/m2)"</span> <span class="co"># or this</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only columns that are really in the dataframe</span></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>existing_weather_feats <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> candidate_features <span class="cf">if</span> c <span class="kw">in</span> df.columns]</span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Add time features</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"month"</span>] <span class="op">=</span> df[<span class="st">"timestamp"</span>].dt.month</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"doy"</span>] <span class="op">=</span> df[<span class="st">"timestamp"</span>].dt.dayofyear   <span class="co"># optional, not used below but handy</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>time_feats <span class="op">=</span> [<span class="st">"month"</span>, <span class="st">"hour"</span>]</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>feature_cols <span class="op">=</span> existing_weather_feats <span class="op">+</span> time_feats</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Using feature columns:"</span>, feature_cols)</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Drop rows with missing values in chosen features / target</span></span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df.dropna(subset<span class="op">=</span>feature_cols <span class="op">+</span> [<span class="st">"frost"</span>])</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_model[feature_cols]</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_model[<span class="st">"frost"</span>]</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Fit XGBoost classifier</span></span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> XGBClassifier(</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>    n_estimators<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>    max_depth<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>    learning_rate<span class="op">=</span><span class="fl">0.05</span>,</span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>    subsample<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>    colsample_bytree<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>    eval_metric<span class="op">=</span><span class="st">"logloss"</span>,</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>    use_label_encoder<span class="op">=</span><span class="va">False</span></span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>model.fit(X, y)</span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Predict frost probability for every hour</span></span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>df_model[<span class="st">"frost_prob"</span>] <span class="op">=</span> model.predict_proba(X)[:, <span class="dv">1</span>]</span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Average frost probability by month (all stations, all years)</span></span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a><span class="co"># --------------------------</span></span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a>monthly_frost <span class="op">=</span> df_model.groupby(<span class="st">"month"</span>)[<span class="st">"frost_prob"</span>].mean()</span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a>plt.plot(monthly_frost.index, monthly_frost.values, marker<span class="op">=</span><span class="st">"o"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"XGBoost Frost Probability by Month (All Stations, All Years)"</span>)</span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Month"</span>)</span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Average Frost Probability"</span>)</span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">13</span>))</span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>plt.grid(alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Index(['Stn Id', 'Stn Name', 'CIMIS Region', 'Date', 'Hour (PST)', 'Jul',
+       'ETo (mm)', 'qc', 'Precip (mm)', 'qc.1', 'Sol Rad (W/sq.m)', 'qc.2',
+       'Vap Pres (kPa)', 'qc.3', 'Air Temp (C)', 'qc.4', 'Rel Hum (%)', 'qc.5',
+       'Dew Point (C)', 'qc.6', 'Wind Speed (m/s)', 'qc.7', 'Wind Dir (0-360)',
+       'qc.8', 'Soil Temp (C)', 'qc.9'],
+      dtype='object')
+Using feature columns: ['Air Temp (C)', 'Dew Point (C)', 'Rel Hum (%)', 'Wind Speed (m/s)', 'month', 'hour']</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\tyler\anaconda3\Lib\site-packages\xgboost\training.py:199: UserWarning: [19:50:10] WARNING: C:\actions-runner\_work\xgboost\xgboost\src\learner.cc:790: 
+Parameters: { "use_label_encoder" } are not used.
+
+  bst.update(dtrain, iteration=i, fobj=obj)
+&lt;positron-console-cell-28&gt;:72: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="F3Project%20(4)_files/figure-html/cell-12-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="2daf3fdd-3080-4497-9a2c-a443255c59fa" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_season(month):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> month <span class="kw">in</span> [<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>]:</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Winter'</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]:</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Spring'</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]:</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Summer'</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Fall'</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">'Season'</span>] <span class="op">=</span> tmp_all[<span class="st">'Month'</span>].<span class="bu">apply</span>(get_season)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="bf3fc404-077d-4d3d-86af-cd8c3f5613b2" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tmp_all[[<span class="st">'Date'</span>, <span class="st">'Month'</span>, <span class="st">'Year'</span>, <span class="st">'Season'</span>]].head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        Date  Month  Year Season
+0 2010-09-28      9  2010   Fall
+1 2010-09-28      9  2010   Fall
+2 2010-09-28      9  2010   Fall
+3 2010-09-28      9  2010   Fall
+4 2010-09-28      9  2010   Fall</code></pre>
+</div>
+</div>
+<div id="481d4bea-c704-439c-8e7b-1609abf979cf" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> pd.read_csv(<span class="st">'2-fivepoints.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="52f560e8-a4a9-4edc-9174-834456053699" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>points.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Index(['Stn Id', 'Stn Name', 'CIMIS Region', 'Date', 'Hour (PST)', 'Jul',
+       'ETo (mm)', 'qc', 'Precip (mm)', 'qc.1', 'Sol Rad (W/sq.m)', 'qc.2',
+       'Vap Pres (kPa)', 'qc.3', 'Air Temp (C)', 'qc.4', 'Rel Hum (%)', 'qc.5',
+       'Dew Point (C)', 'qc.6', 'Wind Speed (m/s)', 'qc.7', 'Wind Dir (0-360)',
+       'qc.8', 'Soil Temp (C)', 'qc.9'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<div id="162fbaa8-6efb-48b2-a024-1227b9a4c920" class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>tmp_all.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>Index(['Stn Id', 'Stn Name', 'CIMIS Region', 'Date', 'Hour (PST)', 'Jul',
+       'ETo (mm)', 'qc', 'Precip (mm)', 'qc.1', 'Sol Rad (W/sq.m)', 'qc.2',
+       'Vap Pres (kPa)', 'qc.3', 'Air Temp (C)', 'qc.4', 'Rel Hum (%)', 'qc.5',
+       'Dew Point (C)', 'qc.6', 'Wind Speed (m/s)', 'qc.7', 'Wind Dir (0-360)',
+       'qc.8', 'Soil Temp (C)', 'qc.9', 'Month', 'Year', 'Day', 'Season'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<div id="a3267671-00f6-4750-830a-70204f37ec46" class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"frost_event"</span>] <span class="op">=</span> (tmp_all[<span class="st">"Air Temp (C)"</span>] <span class="op">&lt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">12</span>, <span class="dv">24</span>]:</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    tmp_all[<span class="ss">f"temp_</span><span class="sc">{</span>h<span class="sc">}</span><span class="ss">h_ahead"</span>] <span class="op">=</span> (</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>        tmp_all.groupby(<span class="st">"Stn Id"</span>)[<span class="st">"Air Temp (C)"</span>].shift(<span class="op">-</span>h)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    tmp_all[<span class="ss">f"frost_</span><span class="sc">{</span>h<span class="sc">}</span><span class="ss">h_ahead"</span>] <span class="op">=</span> (</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        tmp_all[<span class="ss">f"temp_</span><span class="sc">{</span>h<span class="sc">}</span><span class="ss">h_ahead"</span>] <span class="op">&lt;</span> <span class="dv">0</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    ).astype(<span class="bu">int</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since the challenge asks us to predict frost risk (T &lt; 0 °C) and expected temperature at 3 h, 6 h, 12 h, 24 h horizons, we will create columns for these.</p>
+<p>“In addition, the dew point temperature is often used to predict the next morning’s minimum temperature. Consequently, it is extremely important for freeze protection of crops.”</p>
+<p>https://biomet.ucdavis.edu/doc/Principles_of_Frost_Protection%E2%80%93UCDavis_Biometeorology_Group.ptmp_all on Page 7</p>
+<div id="04ddb2d4-fba6-4eef-84fd-8d97b5d684b5" class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> h <span class="kw">in</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">12</span>]:</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    grp <span class="op">=</span> tmp_all.groupby(<span class="st">"Stn Id"</span>)  <span class="co"># group once for efficiency</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Temperature lag and change</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    lag_temp <span class="op">=</span> grp[<span class="st">"Air Temp (C)"</span>].shift(h)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    tmp_all[<span class="ss">f"temp_lag_</span><span class="sc">{</span>h<span class="sc">}</span><span class="ss">h"</span>] <span class="op">=</span> lag_temp</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    tmp_all[<span class="ss">f"temp_change_</span><span class="sc">{</span>h<span class="sc">}</span><span class="ss">h"</span>] <span class="op">=</span> tmp_all[<span class="st">"Air Temp (C)"</span>] <span class="op">-</span> lag_temp</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dewpoint depression lag</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    tmp_all[<span class="ss">f"dewpoint_dep_</span><span class="sc">{</span>h<span class="sc">}</span><span class="ss">h"</span>] <span class="op">=</span> (</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        grp[<span class="st">"Air Temp (C)"</span>].shift(h) <span class="op">-</span> grp[<span class="st">"Dew Point (C)"</span>].shift(h)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Humidity lag</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    tmp_all[<span class="ss">f"hum_lag_</span><span class="sc">{</span>h<span class="sc">}</span><span class="ss">h"</span>] <span class="op">=</span> grp[<span class="st">"Rel Hum (%)"</span>].shift(h)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Wind lag</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    tmp_all[<span class="ss">f"wind_lag_</span><span class="sc">{</span>h<span class="sc">}</span><span class="ss">h"</span>] <span class="op">=</span> grp[<span class="st">"Wind Speed (m/s)"</span>].shift(h)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>“The dew point is important in meteorology because it is directly related to the amount of water vapor in the air and it can be used to determine other variables (e.g., vapor pressure, relative humidity, wet bulb temperature, and vapor pressure deficit) that are often used in agriculture.” Page 7</p>
+<p>Dewpoint depression is simply measuring the difference between the air temperature and dew point temperature. A small dewpoint depression means that the air is close to saturation and when the dewpoint is high realtive to the air temperature, the air cannot hold much more moisture. This allows for rapid radiative cooling due to the difference in temperature.</p>
+<p>This video exlains the mechanism a little bit: https://youtu.be/6buQuGG53gs?si=GKY9xD4dmnzo_kOB&amp;t=11.</p>
+<p>Temperature Change / Cooling Rate (Air Temp – Air Temp.shift(3) : This is simply how fast the surface layer is cooling during the evening. This is important since rapid cooling after sunset is a strong precursor to frost formation.</p>
+<p>Calm-Wind Indicator (Wind Speed &lt; 1 m/s) : This is an important predictor because calm winds allow cold, dense air to settle near the surface. Most radiation frosts occur under clear, calm conditions because minimal turbulence prevents mixing with warmer air aloft. When wind speed drops below 1 m/s, surface cooling accelerates and frost risk increases significantly.</p>
+<p>Vapor Pressure Deficit (VPD) : Represents atmospheric dryness. Low VPD indicates moist air and slower cooling, while high VPD indicates dry air and faster radiational cooling. Sudden decreases in VPD often precede frost formation. Is calculated using “Saturation vapor pressure” (es), which represents the maximum moisture the air could hold at a given temperature. Subtracting the actual vapor pressure gives VPD, which measures atmospheric dryness.</p>
+<div id="fc885b28-336d-4fb4-845f-f6b581589f8a" class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"dewpoint_dep"</span>] <span class="op">=</span> tmp_all[<span class="st">"Air Temp (C)"</span>] <span class="op">-</span> tmp_all[<span class="st">"Dew Point (C)"</span>]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"temp_rate"</span>] <span class="op">=</span> tmp_all[<span class="st">"Air Temp (C)"</span>] <span class="op">-</span> tmp_all[<span class="st">"Air Temp (C)"</span>].shift(<span class="dv">3</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"calm_wind"</span>] <span class="op">=</span> (tmp_all[<span class="st">"Wind Speed (m/s)"</span>] <span class="op">&lt;</span> <span class="dv">1</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>es <span class="op">=</span> <span class="fl">0.6108</span> <span class="op">*</span> np.exp((<span class="fl">17.27</span> <span class="op">*</span> tmp_all[<span class="st">"Air Temp (C)"</span>]) <span class="op">/</span> (tmp_all[<span class="st">"Air Temp (C)"</span>] <span class="op">+</span> <span class="fl">237.3</span>))</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"vpd"</span>] <span class="op">=</span> es <span class="op">-</span> tmp_all[<span class="st">"Vap Pres (kPa)"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We encode the month using sine and cosine so the model understands that months are cyclical. Without this transformation, the model would treat December (12) and January (1) as being far apart, even though they are consecutive and belong to the same season. The sine/cosine encoding fixes this by placing all months on a circular scale, preserving their seasonal relationships.</p>
+<div id="206a5b74-6250-4864-a12f-fd3f9eae0907" class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"is_night"</span>] <span class="op">=</span> (tmp_all[<span class="st">"Sol Rad (W/sq.m)"</span>] <span class="op">&lt;</span> <span class="dv">10</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"month_sin"</span>] <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> tmp_all[<span class="st">"Month"</span>] <span class="op">/</span> <span class="dv">12</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"month_cos"</span>] <span class="op">=</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> tmp_all[<span class="st">"Month"</span>] <span class="op">/</span> <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will now apply the same logic to the direction, because right now the wind direction being 359° and 1° are being perceived to be much different than we know them to be in reality.</p>
+<div id="df8362f0-2ef1-4438-9f63-37a1ac265fad" class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rad <span class="op">=</span> np.deg2rad(tmp_all[<span class="st">"Wind Dir (0-360)"</span>])</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"wind_u"</span>] <span class="op">=</span> tmp_all[<span class="st">"Wind Speed (m/s)"</span>] <span class="op">*</span> np.cos(rad)  <span class="co"># east–west</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>tmp_all[<span class="st">"wind_v"</span>] <span class="op">=</span> tmp_all[<span class="st">"Wind Speed (m/s)"</span>] <span class="op">*</span> np.sin(rad)  <span class="co"># north–south</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9aa46127-e92e-4fe8-b1ee-b9d5db73ef7e" class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>station_meta <span class="op">=</span> tmp_all[[<span class="st">"Stn Id"</span>,<span class="st">"Stn Name"</span>,<span class="st">"CIMIS Region"</span>]].drop_duplicates().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>tmp_all <span class="op">=</span> tmp_all.merge(station_meta, on<span class="op">=</span>[<span class="st">"Stn Id"</span>,<span class="st">"Stn Name"</span>,<span class="st">"CIMIS Region"</span>], how<span class="op">=</span><span class="st">"left"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="74808cc4-a679-44d9-ab08-74ea699db2c5" class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>tmp_all.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Stn Id</th>
+<th data-quarto-table-cell-role="th">Stn Name</th>
+<th data-quarto-table-cell-role="th">CIMIS Region</th>
+<th data-quarto-table-cell-role="th">Date</th>
+<th data-quarto-table-cell-role="th">Hour (PST)</th>
+<th data-quarto-table-cell-role="th">Jul</th>
+<th data-quarto-table-cell-role="th">ETo (mm)</th>
+<th data-quarto-table-cell-role="th">qc</th>
+<th data-quarto-table-cell-role="th">Precip (mm)</th>
+<th data-quarto-table-cell-role="th">qc.1</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">wind_lag_12h</th>
+<th data-quarto-table-cell-role="th">dewpoint_dep</th>
+<th data-quarto-table-cell-role="th">temp_rate</th>
+<th data-quarto-table-cell-role="th">calm_wind</th>
+<th data-quarto-table-cell-role="th">vpd</th>
+<th data-quarto-table-cell-role="th">is_night</th>
+<th data-quarto-table-cell-role="th">month_sin</th>
+<th data-quarto-table-cell-role="th">month_cos</th>
+<th data-quarto-table-cell-role="th">wind_u</th>
+<th data-quarto-table-cell-role="th">wind_v</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>100</td>
+<td>271</td>
+<td>0.06</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>...</td>
+<td>NaN</td>
+<td>15.9</td>
+<td>NaN</td>
+<td>0</td>
+<td>1.526552</td>
+<td>1</td>
+<td>-1.0</td>
+<td>-1.836970e-16</td>
+<td>-0.497032</td>
+<td>-1.625718</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>200</td>
+<td>271</td>
+<td>0.05</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>...</td>
+<td>NaN</td>
+<td>14.7</td>
+<td>NaN</td>
+<td>0</td>
+<td>1.438281</td>
+<td>1</td>
+<td>-1.0</td>
+<td>-1.836970e-16</td>
+<td>-0.156880</td>
+<td>1.793150</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>300</td>
+<td>271</td>
+<td>0.04</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>...</td>
+<td>NaN</td>
+<td>13.1</td>
+<td>NaN</td>
+<td>0</td>
+<td>1.297393</td>
+<td>1</td>
+<td>-1.0</td>
+<td>-1.836970e-16</td>
+<td>-1.010290</td>
+<td>0.818117</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>400</td>
+<td>271</td>
+<td>0.03</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>...</td>
+<td>NaN</td>
+<td>13.6</td>
+<td>-1.8</td>
+<td>0</td>
+<td>1.270125</td>
+<td>1</td>
+<td>-1.0</td>
+<td>-1.836970e-16</td>
+<td>-0.994522</td>
+<td>-0.104528</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>105</td>
+<td>Westlands</td>
+<td>San Joaquin Valley</td>
+<td>2010-09-28</td>
+<td>500</td>
+<td>271</td>
+<td>0.04</td>
+<td></td>
+<td>0.0</td>
+<td></td>
+<td>...</td>
+<td>NaN</td>
+<td>13.8</td>
+<td>-3.4</td>
+<td>0</td>
+<td>1.189152</td>
+<td>1</td>
+<td>-1.0</td>
+<td>-1.836970e-16</td>
+<td>-0.385892</td>
+<td>-1.345766</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 68 columns</p>
+</div>
+</div>
+</div>
+<div id="a0a0d562-7ac7-46df-813c-d9f661f52b99" class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> <span class="st">"frost_6h_ahead"</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>group_col <span class="op">=</span> <span class="st">"Stn Id"</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>qc_cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> tmp_all.columns <span class="cf">if</span> <span class="bu">str</span>(c).startswith(<span class="st">"qc"</span>)]</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>future_cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> tmp_all.columns</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>               <span class="cf">if</span> re.match(<span class="vs">r"</span><span class="dv">^</span><span class="kw">(</span><span class="vs">temp</span><span class="cf">|</span><span class="vs">frost</span><span class="kw">)</span><span class="vs">_</span><span class="dv">\d</span><span class="op">+</span><span class="vs">h_ahead</span><span class="dv">$</span><span class="vs">"</span>, <span class="bu">str</span>(c))]</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>exclude <span class="op">=</span> <span class="bu">set</span>(</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    [target, group_col, <span class="st">"Stn Name"</span>, <span class="st">"CIMIS Region"</span>, <span class="st">"Date"</span>, <span class="st">"Hour (PST)"</span>]</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> qc_cols</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> future_cols        <span class="co"># &lt;- drop ALL future horizon cols</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>num_feats <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> tmp_all.columns</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>             <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> exclude <span class="kw">and</span> pd.api.types.is_numeric_dtype(tmp_all[c])]</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>maybe_cat <span class="op">=</span> [<span class="st">"climate_zone"</span>]</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>cat_feats <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> maybe_cat <span class="cf">if</span> c <span class="kw">in</span> tmp_all.columns]</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>used_cols <span class="op">=</span> num_feats <span class="op">+</span> cat_feats</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>transformers <span class="op">=</span> [</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>    (<span class="st">"num"</span>, Pipeline([</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"impute"</span>, SimpleImputer(strategy<span class="op">=</span><span class="st">"median"</span>)),</span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>        (<span class="st">"scale"</span>, StandardScaler())</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>    ]), num_feats)</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> cat_feats:</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>    transformers.append((<span class="st">"cat"</span>, OneHotEncoder(handle_unknown<span class="op">=</span><span class="st">"ignore"</span>), cat_feats))</span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>pre <span class="op">=</span> ColumnTransformer(transformers, remainder<span class="op">=</span><span class="st">"drop"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="c32e8e10-95b1-4250-97d6-f5bbbab7e9ca" class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>base_model <span class="op">=</span> XGBClassifier(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    n_estimators<span class="op">=</span><span class="dv">200</span>,        <span class="co"># fewer trees; early stopping trims further</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    learning_rate<span class="op">=</span><span class="fl">0.12</span>,     <span class="co"># slightly higher for speed</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    max_depth<span class="op">=</span><span class="dv">3</span>,            <span class="co"># shallower trees are faster</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    subsample<span class="op">=</span><span class="fl">0.9</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    colsample_bytree<span class="op">=</span><span class="fl">0.9</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    eval_metric<span class="op">=</span><span class="st">"logloss"</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    tree_method<span class="op">=</span><span class="st">"hist"</span>,     <span class="co"># if you have GPU: use "gpu_hist"</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>X_raw <span class="op">=</span> tmp_all[used_cols].copy()</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> c <span class="kw">in</span> num_feats:</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    X_raw[c] <span class="op">=</span> X_raw[c].astype(np.float32)</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> tmp_all[target].astype(<span class="bu">int</span>)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a>groups <span class="op">=</span> tmp_all[group_col]</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a>gkf <span class="op">=</span> GroupKFold(n_splits<span class="op">=</span>tmp_all[group_col].nunique())</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> []</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fold, (tr, te) <span class="kw">in</span> <span class="bu">enumerate</span>(gkf.split(X_raw, y, groups<span class="op">=</span>groups), <span class="dv">1</span>):</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a>    Xtr_raw, Xval_raw, ytr, yval <span class="op">=</span> train_test_split(</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>        X_raw.iloc[tr], y.iloc[tr], test_size<span class="op">=</span><span class="fl">0.10</span>, random_state<span class="op">=</span><span class="dv">42</span>, stratify<span class="op">=</span>y.iloc[tr]</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a>    Xte_raw, yte <span class="op">=</span> X_raw.iloc[te], y.iloc[te]</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a>    pre.fit(Xtr_raw, ytr)</span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>    Xtr  <span class="op">=</span> pre.transform(Xtr_raw)</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a>    Xval <span class="op">=</span> pre.transform(Xval_raw)</span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>    Xte  <span class="op">=</span> pre.transform(Xte_raw)</span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> XGBClassifier(</span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a>    n_estimators<span class="op">=</span><span class="dv">120</span>,      <span class="co"># fewer trees</span></span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>    learning_rate<span class="op">=</span><span class="fl">0.12</span>,</span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>    max_depth<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>    subsample<span class="op">=</span><span class="fl">0.9</span>,</span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>    colsample_bytree<span class="op">=</span><span class="fl">0.9</span>,</span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>    eval_metric<span class="op">=</span><span class="st">"logloss"</span>,</span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a>    n_jobs<span class="op">=-</span><span class="dv">1</span>,</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>    tree_method<span class="op">=</span><span class="st">"hist"</span>,</span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>    verbosity<span class="op">=</span><span class="dv">0</span></span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>    model.fit(Xtr, ytr)</span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>    p <span class="op">=</span> model.predict_proba(Xte)[:, <span class="dv">1</span>]</span>
+<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a>    scores.append(brier_score_loss(yte, p))</span>
+<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Fold </span><span class="sc">{</span>fold<span class="sc">}</span><span class="ss">: brier=</span><span class="sc">{</span>scores[<span class="op">-</span><span class="dv">1</span>]<span class="sc">:.4f}</span><span class="ss">"</span>, flush<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"LOSO Brier mean ± sd:"</span>, np.mean(scores), <span class="st">"±"</span>, np.std(scores))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Fold 1: brier=0.0059
+Fold 2: brier=0.0046
+Fold 3: brier=0.0047
+Fold 4: brier=0.0044
+Fold 5: brier=0.0060
+Fold 6: brier=0.0051
+Fold 7: brier=0.0028
+Fold 8: brier=0.0039
+Fold 9: brier=0.0045
+Fold 10: brier=0.0084
+Fold 11: brier=0.0048
+Fold 12: brier=0.0084
+Fold 13: brier=0.0065
+Fold 14: brier=0.0025
+Fold 15: brier=0.0041
+Fold 16: brier=0.0059
+Fold 17: brier=0.0042
+Fold 18: brier=0.0065
+LOSO Brier mean ± sd: 0.0051657828025819036 ± 0.0015681415810543818</code></pre>
+</div>
+</div>
+<div id="694b9538-584a-4b65-88f4-343f05333a52" class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>mean_frost <span class="op">=</span> y.mean()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>baseline_brier <span class="op">=</span> np.mean((mean_frost <span class="op">-</span> y)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Frost rate:"</span>, y.mean())</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Baseline Brier:"</span>, baseline_brier)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Model mean Brier:"</span>, np.mean(scores))</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Improvement:"</span>, <span class="dv">1</span> <span class="op">-</span> np.mean(scores)<span class="op">/</span>baseline_brier)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Frost rate: 0.008579599216004326
+Baseline Brier: 0.008505989693297059
+Model mean Brier: 0.0051657828025819036
+Improvement: 0.39268880061626754</code></pre>
+</div>
+</div>
+<p>This basically means that if you always predicted a frost probability equal to the historical frost frequency, your baseline Brier score would be 0.0085. In comparison, our model’s Brier score is 39.3% lower, meaning it provides 39.3% better probabilistic accuracy than climatology.</p>
+<div id="01b9310c-7470-4824-b72b-16eb10efd8db" class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.calibration <span class="im">import</span> calibration_curve</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>prob_true, prob_pred <span class="op">=</span> calibration_curve(yte, p, n_bins<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>plt.plot(prob_pred, prob_true, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>plt.plot([<span class="dv">0</span>,<span class="dv">1</span>],[<span class="dv">0</span>,<span class="dv">1</span>],<span class="st">'--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="F3Project%20(4)_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="ac991a25-30c6-49d0-9daa-ae63726fd58e" class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> roc_auc_score</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ROC-AUC:"</span>, roc_auc_score(yte, p))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ROC-AUC: 0.9935158655558435</code></pre>
+</div>
+</div>
+<p>Here we will look at the feature importances from the trained XGBoost model using the gain metric. This reveals which predictors contribute most to reducing error across the decision trees, and therefore which variables the model considers most informative for frost forecasting.</p>
+<div id="708ccc72-7412-493e-b335-d61fd34c6189" class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>model.get_booster().get_score(importance_type<span class="op">=</span><span class="st">'gain'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>{'f0': 83.46697998046875,
+ 'f1': 69.28083801269531,
+ 'f3': 321.9444885253906,
+ 'f4': 210.47068786621094,
+ 'f5': 618.5256958007812,
+ 'f6': 20.043357849121094,
+ 'f7': 1157.294677734375,
+ 'f8': 65.49110412597656,
+ 'f9': 6.6636505126953125,
+ 'f10': 598.8933715820312,
+ 'f11': 44.66310119628906,
+ 'f12': 108.36712646484375,
+ 'f13': 30.95562171936035,
+ 'f15': 2899.831787109375,
+ 'f16': 168.44659423828125,
+ 'f17': 84.71440124511719,
+ 'f18': 76.31112670898438,
+ 'f19': 21.726959228515625,
+ 'f20': 69.10191345214844,
+ 'f21': 70.73120880126953,
+ 'f22': 70.367919921875,
+ 'f23': 5.249992370605469,
+ 'f24': 54.44306182861328,
+ 'f25': 143.46238708496094,
+ 'f26': 3247.59619140625,
+ 'f27': 73.92271423339844,
+ 'f28': 92.09918975830078,
+ 'f29': 75.5201644897461,
+ 'f30': 510.81884765625,
+ 'f31': 152.6686248779297,
+ 'f32': 88.49119567871094,
+ 'f33': 44.752620697021484,
+ 'f34': 147.8514862060547,
+ 'f35': 38.010711669921875,
+ 'f36': 70.27425384521484,
+ 'f38': 127.352783203125,
+ 'f39': 127.76765441894531,
+ 'f41': 764.1499633789062,
+ 'f42': 48.666202545166016,
+ 'f43': 40.703369140625}</code></pre>
+</div>
+</div>
+<div id="6433876e-bd1f-4eed-b6e7-a9531e412c37" class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> pre.get_feature_names_out()  <span class="co"># names after ColumnTransformer</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>booster <span class="op">=</span> model.get_booster()</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>imp_gain <span class="op">=</span> booster.get_score(importance_type<span class="op">=</span><span class="st">"gain"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>mapped <span class="op">=</span> { feature_names[<span class="bu">int</span>(k[<span class="dv">1</span>:])]: v <span class="cf">for</span> k, v <span class="kw">in</span> imp_gain.items() }</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="bu">sorted</span>(mapped.items(), key<span class="op">=</span><span class="kw">lambda</span> kv: kv[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)[:<span class="dv">25</span>]</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> name, gain <span class="kw">in</span> top:</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>name<span class="sc">:40s}</span><span class="ss">  gain=</span><span class="sc">{</span>gain<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>num__temp_change_6h                       gain=3247.596
+num__temp_lag_1h                          gain=2899.832
+num__Dew Point (C)                        gain=1157.295
+num__month_cos                            gain=764.150
+num__Air Temp (C)                         gain=618.526
+num__Soil Temp (C)                        gain=598.893
+num__temp_lag_12h                         gain=510.819
+num__Sol Rad (W/sq.m)                     gain=321.944
+num__Vap Pres (kPa)                       gain=210.471
+num__temp_change_1h                       gain=168.447
+num__temp_change_12h                      gain=152.669
+num__wind_lag_12h                         gain=147.851
+num__temp_lag_6h                          gain=143.462
+num__is_night                             gain=127.768
+num__vpd                                  gain=127.353
+num__Year                                 gain=108.367
+num__hum_lag_6h                           gain=92.099
+num__dewpoint_dep_12h                     gain=88.491
+num__dewpoint_dep_1h                      gain=84.714
+num__Jul                                  gain=83.467
+num__hum_lag_1h                           gain=76.311
+num__wind_lag_6h                          gain=75.520
+num__dewpoint_dep_6h                      gain=73.923
+num__temp_change_3h                       gain=70.731
+num__dewpoint_dep_3h                      gain=70.368</code></pre>
+</div>
+</div>
+<p>The ROC-AUC being 0.9935 doesn’t have anything to do with the probability, but in this case it means that model’s ability to rank frost vs.&nbsp;non-frost cases is very strong. This seems pretty likely since frost has a very distinct signature that we have captured (temperature change dropping sharply, dewpoint depression collapses, wind is near-zero, radiation being low, it being nighttime, etc).”</p>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
